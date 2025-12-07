@@ -16,7 +16,7 @@ script = ExtResource("1_ig7tw")
 shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(0.99870706, 0.022880722, 0.04539521, -0.04073081, -0.17416476, 0.9838739, 0.030417997, -0.9844508, -0.17300761, 0, 0, 0)
+transform = Transform3D(0.99870706, 0.022880722, 0.04539521, -0.04573123, 0.014382347, 0.9988504, 0.022201534, -0.9996349, 0.015410125, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_ig7tw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
