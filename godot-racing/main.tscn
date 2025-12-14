@@ -25,25 +25,27 @@ glow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h2yge")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3400216, 0)
 gravity_scale = 0.0
 script = ExtResource("1_ig7tw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.015480452, 0.9998802, 0, -0.9998802, 0.015480452, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(0.99870706, 0.022880722, 0.04539521, -0.04573123, 0.014382347, 0.9988504, 0.022201534, -0.9996349, 0.015410125, 0, 0, 0)
+transform = Transform3D(1.0159997, 0.022756124, 0.02822721, -0.046523068, 0.014304028, 0.6210955, 0.022585955, -0.99419135, 0.009582175, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_ig7tw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.11067104, 0.9938571, 0, -0.9938571, 0.11067104, 0, 16.860182, -0.06605911)
 fov = 122.81014
 script = ExtResource("2_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25000006, 0.4969286, -0.6900573, 0.5261967, -0.05533553, 0.57993186, 0.81278354, 0, 0.46745467, 4.794771)
+shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 
