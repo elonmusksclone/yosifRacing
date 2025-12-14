@@ -1,6 +1,7 @@
 extends Camera3D
 var a=0	
-var speed = 0
+#a is for angle
+var speed = 0 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,9 +14,9 @@ func _process(delta: float) -> void:
 	position.z=position.z+sin(a)/10*speed
 	position.x=position.x+cos(a)/10*speed
 	if (Input.is_action_pressed("KEYA")):
-		a=a+0.1
-	if (Input.is_action_pressed("KEYD")):
 		a=a-0.1
+	if (Input.is_action_pressed("KEYD")):
+		a=a+0.1
 	if (Input.is_action_pressed("KEYW")):
 		speed=speed+0.1
 	if (Input.is_action_pressed("KEYS")):

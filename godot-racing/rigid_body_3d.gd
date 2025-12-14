@@ -1,7 +1,7 @@
 extends RigidBody3D
 var a=0	
 #a is for angle
-var speed = 0
+var speed = 0 
 
 
 # Called when the node enters the scene tree for the first time.
