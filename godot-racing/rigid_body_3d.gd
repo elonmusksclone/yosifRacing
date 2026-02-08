@@ -1,5 +1,6 @@
 extends RigidBody3D
 var a=0	
+var olda = 0
 #a is for angle
 var speed = 0 
 
@@ -11,12 +12,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.z=position.z+sin(a)/5*speed
-	position.x=position.x+cos(a)/5*speed
+	position.z=position.z+sin(olda)/5*speed
+	position.x=position.x+cos(olda)/5*speed
+	rotate_object_local(Vector3(0, 1, 0), -a)
+	olda=olda+a
+	a=0
 	if (Input.is_action_pressed("KEYA")):
-		a=a-0.1
+		a=a-(0.1/speed/2)-0.1
 	if (Input.is_action_pressed("KEYD")):
-		a=a+0.1
+		a=a+(0.1/speed/2)+0.1
 	if (Input.is_action_pressed("KEYW")):
 		speed=speed+0.1
 	if (Input.is_action_pressed("KEYS")):
