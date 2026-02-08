@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 	rotate_object_local(Vector3(0, 1, 0), -a)
 	olda=olda+a
 	a=0
+	speed=speed*0.99
 	if (Input.is_action_pressed("KEYA")):
 		a=a-(0.04*speed*damp)
 	if (Input.is_action_pressed("KEYD")):
@@ -27,4 +28,8 @@ func _process(delta: float) -> void:
 		speed=speed+acc
 	if (Input.is_action_pressed("KEYS")):
 		speed=speed-acc
+	if (Input.is_action_pressed("KEYC")):
+		position.z=position.z+sin(olda)/5*-speed
+		position.x=position.x+cos(olda)/5*-speed
+		speed=-(speed/1.3)
 	await get_tree().create_timer(2).timeout
