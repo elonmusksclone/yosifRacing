@@ -1,8 +1,10 @@
 extends RigidBody3D
 var a=0	
-var olda = 0
+var damp=0.5
+var olda=0
 #a is for angle
-var speed = 0 
+var speed = 0
+var acc = 0.03
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,11 +20,11 @@ func _process(delta: float) -> void:
 	olda=olda+a
 	a=0
 	if (Input.is_action_pressed("KEYA")):
-		a=a-(0.1/speed/2)-0.1
+		a=a-(0.04*speed*damp)
 	if (Input.is_action_pressed("KEYD")):
-		a=a+(0.1/speed/2)+0.1
+		a=a+(0.04*speed*damp)
 	if (Input.is_action_pressed("KEYW")):
-		speed=speed+0.1
+		speed=speed+acc
 	if (Input.is_action_pressed("KEYS")):
-		speed=speed-0.1
+		speed=speed-acc
 	await get_tree().create_timer(2).timeout

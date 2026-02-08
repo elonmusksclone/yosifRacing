@@ -19,12 +19,6 @@ glow_enabled = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ig7tw"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ig7tw"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_0xm2m"]
-albedo_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
-albedo_texture = SubResource("NoiseTexture2D_ig7tw")
-
 [node name="Main" type="Node3D" unique_id=756254221]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1986471326]
@@ -36,8 +30,7 @@ gravity_scale = 0.0
 script = ExtResource("1_ig7tw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1827555683]
-transform = Transform3D(-0.07445655, -0.9971048, 0.015437483, 0, 0.015480452, 0.9998802, -0.9972243, 0.07444763, -0.0011526211, 0, 0, 0)
-rotation_edit_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.015480452, 0.9998802, 0, -0.9998802, 0.015480452, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1640328332]
@@ -48,11 +41,24 @@ mesh = SubResource("CapsuleMesh_ig7tw")
 transform = Transform3D(-0.0060426504, 0.52153116, -0.85321087, -0.0077926633, 0.85317594, 0.5215651, 0.9999514, 0.009800419, -0.001091327, 0, 0.91472006, -0.06605911)
 fov = 122.81014
 
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=655773586]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1622652990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9686279, -0.8248557, 1.1448975)
+size = Vector3(2.9372559, 1, 4.107666)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1111896661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9686279, -0.8248557, -2.978363)
+size = Vector3(2.9372559, 1, 4.107666)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1123297285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9686279, -0.8248557, -6.935295)
+size = Vector3(2.9372559, 1, 4.107666)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1105578940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.594374, -0.8248557, -1.1473551)
+size = Vector3(9.071167, 1, 12.626221)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1198898778]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25000006, 0, 0.50000006, 0.86602545, -0.50000006, 0.75, -0.43301275, 0, 21.677233, 8.940697e-08)
 shadow_enabled = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1602638250]
-transform = Transform3D(51.438175, 0, 0, 0, 1, 0, 0, 0, 6.63131, 31.718758, -1.1231704, -113.03635)
-size = Vector3(18.243286, 1, 130.05002)
-material = SubResource("ORMMaterial3D_0xm2m")
