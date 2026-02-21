@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6gi5l3hwj3ol"]
 
 [ext_resource type="Script" uid="uid://dq8ac20sxb2ih" path="res://rigid_body_3d.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bw2ugtu8eadsf" path="res://camera_body.gd" id="2_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +26,8 @@ glow_enabled = true
 albedo_color = Color(0.5546625, 0.5546625, 0.5546625, 1)
 albedo_texture = SubResource("NoiseTexture2D_ig7tw")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+
 [node name="Main" type="Node3D" unique_id=756254221]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1986471326]
@@ -43,10 +46,6 @@ shape = SubResource("CapsuleShape3D_7dm0k")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1640328332]
 transform = Transform3D(-0.029855622, 0.994003, -0.009783919, -0.046523064, 0.014304027, 0.6210954, 1.0158122, 0.029869735, 0.028157922, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_ig7tw")
-
-[node name="Camera3D" type="Camera3D" parent="RigidBody3D" unique_id=1546483533]
-transform = Transform3D(-0.0060426504, 0.52153116, -0.85321087, -0.0077926633, 0.85317594, 0.5215651, 0.9999514, 0.009800419, -0.001091327, 0, 0.91472006, -0.06605911)
-fov = 122.81014
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1198898778]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25000006, 0, 0.50000006, 0.86602545, -0.50000006, 0.75, -0.43301275, 0, 21.677233, 8.940697e-08)
@@ -74,3 +73,15 @@ size = Vector3(4.879883, 1.4589844, 1)
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=872844168]
 transform = Transform3D(-0.75733715, 0, 0.6530241, 0, 1, 0, -0.6530241, 0, -0.75733715, -27.657532, -0.22949219, -16.581518)
 size = Vector3(1.7991943, 1.4589844, 5.123535)
+
+[node name="Camera Body" type="RigidBody3D" parent="." unique_id=1879099611]
+gravity_scale = 0.0
+script = ExtResource("2_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="Camera Body" unique_id=1546483533]
+transform = Transform3D(-0.009934491, 0.5214891, -0.8532002, -0.0077926638, 0.85317594, 0.5215651, 0.9999203, 0.011830184, -0.0044120797, -1.5091938, 1.1048958, 0)
+fov = 130.59686
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Body" unique_id=1997191249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3133543, 1.3343382, 0)
+shape = SubResource("BoxShape3D_1bvp3")
