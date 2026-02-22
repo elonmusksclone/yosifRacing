@@ -18,9 +18,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position.z=position.z+sin(olda)/5*speed
 	position.x=position.x+cos(olda)/5*speed
-	rotate_object_local(Vector3(0, 1, 0), da)
+	rotate_object_local(Vector3(0, 1, 0), -da)
 	olda=olda+a
-	da=(olda-direction)*0.5+(a*0.5)
+	da=(olda-direction)*0.05+(a*0.1)
 	direction=direction+da
 	a=0
 	speed=speed*0.99

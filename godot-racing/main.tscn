@@ -56,21 +56,21 @@ transform = Transform3D(51.438175, 0, 0, 0, 1, 0, 0, 0, 6.63131, 31.718758, -1.1
 size = Vector3(18.243286, 1, 130.05002)
 material = SubResource("ORMMaterial3D_0xm2m")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=390033048]
+[node name="Walls" type="CSGCombiner3D" parent="." unique_id=390033048]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1626790926]
+[node name="CSGBox3D" type="CSGBox3D" parent="Walls" unique_id=1626790926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9399414, -0.22949219, 5.7430735)
 size = Vector3(4.879883, 1.4589844, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=897380276]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Walls" unique_id=897380276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8610773, -0.22949219, 3.681306)
 size = Vector3(1.7991943, 1.4589844, 5.123535)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1973254890]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Walls" unique_id=1973254890]
 transform = Transform3D(-0.75733715, 0, 0.6530241, 0, 1, 0, -0.6530241, 0, -0.75733715, -24.098862, -0.22949219, -16.235401)
 size = Vector3(4.879883, 1.4589844, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=872844168]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Walls" unique_id=872844168]
 transform = Transform3D(-0.75733715, 0, 0.6530241, 0, 1, 0, -0.6530241, 0, -0.75733715, -27.657532, -0.22949219, -16.581518)
 size = Vector3(1.7991943, 1.4589844, 5.123535)
 
@@ -79,8 +79,8 @@ gravity_scale = 0.0
 script = ExtResource("2_h2yge")
 
 [node name="Camera3D" type="Camera3D" parent="Camera Body" unique_id=1546483533]
-transform = Transform3D(-0.009934491, 0.5214891, -0.8532002, -0.0077926638, 0.85317594, 0.5215651, 0.9999203, 0.011830184, -0.0044120797, -1.5091938, 1.1048958, 0)
-fov = 130.59686
+transform = Transform3D(-0.0076627242, 0.29085955, -0.95673513, -0.010035058, 0.95669264, 0.29092702, 0.9999203, 0.011830185, -0.0044120797, -1.5655258, 1.3276904, 0)
+fov = 96.942184
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Body" unique_id=1997191249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3133543, 1.3343382, 0)
