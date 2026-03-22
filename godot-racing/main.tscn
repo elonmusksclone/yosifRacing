@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6gi5l3hwj3ol"]
 
 [ext_resource type="Script" uid="uid://dq8ac20sxb2ih" path="res://rigid_body_3d.gd" id="1_ig7tw"]
+[ext_resource type="ArrayMesh" uid="uid://b4gwfv8kx0bcs" path="res://assets/formula 1/Formula 1 mesh.obj" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://bw2ugtu8eadsf" path="res://camera_body.gd" id="2_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
@@ -18,7 +19,10 @@ glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ig7tw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(0.55, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ig7tw"]
 
@@ -44,8 +48,10 @@ rotation_edit_mode = 1
 shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1640328332]
-transform = Transform3D(-0.029855622, 0.994003, -0.009783919, -0.046523064, 0.014304027, 0.6210954, 1.0158122, 0.029869735, 0.028157922, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_ig7tw")
+transform = Transform3D(-0.01, 0, -5.2453664e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.006, 1.4699873, -0.40347457, 0)
+mesh = ExtResource("2_1bvp3")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+surface_material_override/1 = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1198898778]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25000006, 0, 0.50000006, 0.86602545, -0.50000006, 0.75, -0.43301275, 0, 21.677233, 8.940697e-08)
