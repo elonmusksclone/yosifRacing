@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1rjo0qpl8o4n"]
+
+[ext_resource type="Texture2D" uid="uid://drrapmrw77o11" path="res://assets/oil.jpg" id="1_k5de2"]
+[ext_resource type="Texture2D" uid="uid://crfp4n5hl387p" path="res://assets/speed.jpg" id="2_efote"]
+[ext_resource type="Texture2D" uid="uid://cu0ifjmxsmyxy" path="res://assets/money$.png" id="4_gv1iq"]
+[ext_resource type="Texture2D" uid="uid://be85ghfhnaa3q" path="res://assets/year.jpg" id="4_ne771"]
+[ext_resource type="Texture2D" uid="uid://ct8grjpscj6dn" path="res://assets/gold.jpg" id="5_1and6"]
+[ext_resource type="Texture2D" uid="uid://bex1abaiayg07" path="res://assets/stock.png" id="6_w75gc"]
+[ext_resource type="Texture2D" uid="uid://chnr2ba7y0eo1" path="res://assets/lockheedtogold.png" id="7_1and6"]
+[ext_resource type="Texture2D" uid="uid://dw11axtqqbuu2" path="res://assets/maxxing.png" id="8_w75gc"]
+[ext_resource type="Texture2D" uid="uid://dlck7nib7nn1t" path="res://assets/Screenshot 2026-04-25 141308.png" id="9_gbfpv"]
+[ext_resource type="Texture2D" uid="uid://c6nf1dm8h24pl" path="res://assets/Screenshot 2026-04-25 141425.png" id="10_4x0me"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Oil" type="Sprite2D" parent="."]
+position = Vector2(105, 38)
+texture = ExtResource("1_k5de2")
+
+[node name="Speed" type="Sprite2D" parent="."]
+position = Vector2(128, 843)
+texture = ExtResource("2_efote")
+
+[node name="Year" type="Sprite2D" parent="."]
+position = Vector2(1830, 63)
+texture = ExtResource("4_ne771")
+
+[node name="Money$" type="Sprite2D" parent="."]
+position = Vector2(1626, 870.75)
+texture = ExtResource("4_gv1iq")
+
+[node name="Gold" type="Sprite2D" parent="."]
+position = Vector2(1831, 870.75)
+scale = Vector2(0.74050635, 1)
+texture = ExtResource("5_1and6")
+
+[node name="Stock" type="Sprite2D" parent="."]
+position = Vector2(1385.5, 866.25)
+texture = ExtResource("6_w75gc")
+
+[node name="Lockheedtogold" type="Sprite2D" parent="."]
+position = Vector2(1628.5, 744.25)
+scale = Vector2(1.4489725, 0.64012736)
+texture = ExtResource("7_1and6")
+
+[node name="Maxxing" type="Sprite2D" parent="."]
+position = Vector2(970, 76)
+texture = ExtResource("8_w75gc")
+
+[node name="Screenshot20260425141308" type="Sprite2D" parent="."]
+position = Vector2(166.5, 273.75)
+scale = Vector2(0.21245186, 0.41511387)
+texture = ExtResource("9_gbfpv")
+
+[node name="Screenshot20260425141425" type="Sprite2D" parent="."]
+position = Vector2(175.00003, 520)
+scale = Vector2(0.4300874, 0.41513437)
+texture = ExtResource("10_4x0me")

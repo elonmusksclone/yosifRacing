@@ -1,8 +1,10 @@
-[gd_scene format=3 uid="uid://b6gi5l3hwj3ol"]
+[gd_scene load_steps=16 format=3 uid="uid://b6gi5l3hwj3ol"]
 
 [ext_resource type="Script" uid="uid://dq8ac20sxb2ih" path="res://rigid_body_3d.gd" id="1_ig7tw"]
 [ext_resource type="ArrayMesh" uid="uid://b4gwfv8kx0bcs" path="res://assets/formula 1/Formula 1 mesh.obj" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://bw2ugtu8eadsf" path="res://camera_body.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://doteury4l3lfl" path="res://assets/Screenshot 2026-04-25 140000.png" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d1rjo0qpl8o4n" path="res://HUD.tscn" id="4_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,6 +26,9 @@ albedo_color = Color(0.55, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_texture = ExtResource("3_lquwl")
+
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ig7tw"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_0xm2m"]
@@ -32,62 +37,53 @@ albedo_texture = SubResource("NoiseTexture2D_ig7tw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
 
-[node name="Main" type="Node3D" unique_id=756254221]
+[node name="Main" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1986471326]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h2yge")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=77280208]
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3400216, 0)
+disable_mode = 2
 gravity_scale = 0.0
 script = ExtResource("1_ig7tw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1827555683]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(-0.07445655, -0.9971048, 0.015437483, 0, 0.015480452, 0.9998802, -0.9972243, 0.07444763, -0.0011526211, 0, 0, 0)
 rotation_edit_mode = 1
 shape = SubResource("CapsuleShape3D_7dm0k")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1640328332]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(-0.01, 0, -5.2453664e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.006, 1.4699873, -0.40347457, 0)
 mesh = ExtResource("2_1bvp3")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 surface_material_override/1 = SubResource("StandardMaterial3D_1bvp3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1198898778]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25000006, 0, 0.50000006, 0.86602545, -0.50000006, 0.75, -0.43301275, 0, 21.677233, 8.940697e-08)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1602638250]
-transform = Transform3D(51.438175, 0, 0, 0, 1, 0, 0, 0, 6.63131, 31.718758, -1.1231704, -113.03635)
-size = Vector3(18.243286, 1, 130.05002)
+[node name="Map" type="CSGBox3D" parent="."]
+transform = Transform3D(-51, 0, 0, 0, -0.991, 0, 0, 0, -6.575, -7.0233536, -2.1866696, 5.1085205)
+material_override = SubResource("StandardMaterial3D_7mycd")
+size = Vector3(8.472755, 0.001, 101.56952)
 material = SubResource("ORMMaterial3D_0xm2m")
 
-[node name="Walls" type="CSGCombiner3D" parent="." unique_id=390033048]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Walls" unique_id=1626790926]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9399414, -0.22949219, 5.7430735)
-size = Vector3(4.879883, 1.4589844, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Walls" unique_id=897380276]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8610773, -0.22949219, 3.681306)
-size = Vector3(1.7991943, 1.4589844, 5.123535)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Walls" unique_id=1973254890]
-transform = Transform3D(-0.75733715, 0, 0.6530241, 0, 1, 0, -0.6530241, 0, -0.75733715, -2.1565228, -0.22949219, 3.9161987)
-size = Vector3(4.879883, 1.4589844, 1)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Walls" unique_id=872844168]
-transform = Transform3D(-0.75733715, 0, 0.6530241, 0, 1, 0, -0.6530241, 0, -0.75733715, -5.8863807, -0.22949219, 4.226427)
-size = Vector3(1.7991943, 1.4589844, 5.123535)
-
-[node name="Camera Body" type="RigidBody3D" parent="." unique_id=1879099611]
+[node name="Camera Body" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
 script = ExtResource("2_h2yge")
 
-[node name="Camera3D" type="Camera3D" parent="Camera Body" unique_id=1546483533]
-transform = Transform3D(-0.0076627242, 0.29085955, -0.95673513, -0.010035058, 0.95669264, 0.29092702, 0.9999203, 0.011830185, -0.0044120797, -1.5655258, 1.3276904, 0)
-fov = 96.942184
+[node name="Camera3D" type="Camera3D" parent="Camera Body"]
+transform = Transform3D(-0.012625167, 0.93244547, -0.36108994, -0.00015773869, 0.36111692, 0.9325206, 0.9999203, 0.011830185, -0.004412079, 0.3071493, 3.6159894, 0)
+fov = 143.43748
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Body" unique_id=1997191249]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3133543, 1.3343382, 0)
 shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Node2D" parent="HUD" instance=ExtResource("4_1bvp3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9399414, -0.22949219, 5.7430735)
