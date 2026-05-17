@@ -14,15 +14,16 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Oil" type="Sprite2D" parent="."]
-position = Vector2(105, 38)
+position = Vector2(104, 41)
 texture = ExtResource("1_k5de2")
 
 [node name="Speed" type="Sprite2D" parent="."]
-position = Vector2(109, 576)
+position = Vector2(112, 572.00006)
+scale = Vector2(1.0142858, 1.0284975)
 texture = ExtResource("2_efote")
 
 [node name="Year" type="Sprite2D" parent="."]
-position = Vector2(1060, 60)
+position = Vector2(1063, 63)
 texture = ExtResource("4_ne771")
 
 [node name="Money$" type="Sprite2D" parent="."]
@@ -35,11 +36,11 @@ scale = Vector2(0.74050635, 1)
 texture = ExtResource("5_1and6")
 
 [node name="Stock" type="Sprite2D" parent="."]
-position = Vector2(629.5, 516.25)
+position = Vector2(635, 521)
 texture = ExtResource("6_w75gc")
 
 [node name="Lockheedtogold" type="Sprite2D" parent="."]
-position = Vector2(872.5, 394.25)
+position = Vector2(839.00006, 395)
 scale = Vector2(1.4489725, 0.64012736)
 texture = ExtResource("7_1and6")
 
