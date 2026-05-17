@@ -18,41 +18,41 @@ position = Vector2(105, 38)
 texture = ExtResource("1_k5de2")
 
 [node name="Speed" type="Sprite2D" parent="."]
-position = Vector2(128, 843)
+position = Vector2(109, 576)
 texture = ExtResource("2_efote")
 
 [node name="Year" type="Sprite2D" parent="."]
-position = Vector2(1830, 63)
+position = Vector2(1060, 60)
 texture = ExtResource("4_ne771")
 
 [node name="Money$" type="Sprite2D" parent="."]
-position = Vector2(1626, 870.75)
+position = Vector2(870, 520.75)
 texture = ExtResource("4_gv1iq")
 
 [node name="Gold" type="Sprite2D" parent="."]
-position = Vector2(1831, 870.75)
+position = Vector2(1075, 520.75)
 scale = Vector2(0.74050635, 1)
 texture = ExtResource("5_1and6")
 
 [node name="Stock" type="Sprite2D" parent="."]
-position = Vector2(1385.5, 866.25)
+position = Vector2(629.5, 516.25)
 texture = ExtResource("6_w75gc")
 
 [node name="Lockheedtogold" type="Sprite2D" parent="."]
-position = Vector2(1628.5, 744.25)
+position = Vector2(872.5, 394.25)
 scale = Vector2(1.4489725, 0.64012736)
 texture = ExtResource("7_1and6")
 
 [node name="Maxxing" type="Sprite2D" parent="."]
-position = Vector2(970, 76)
+position = Vector2(578, 79)
 texture = ExtResource("8_w75gc")
 
 [node name="Screenshot20260425141308" type="Sprite2D" parent="."]
-position = Vector2(166.5, 273.75)
+position = Vector2(157, 173.00003)
 scale = Vector2(0.21245186, 0.41511387)
 texture = ExtResource("9_gbfpv")
 
 [node name="Screenshot20260425141425" type="Sprite2D" parent="."]
-position = Vector2(175.00003, 520)
-scale = Vector2(0.4300874, 0.41513437)
+position = Vector2(111.609276, 369.625)
+scale = Vector2(0.3117585, 0.3009194)
 texture = ExtResource("10_4x0me")

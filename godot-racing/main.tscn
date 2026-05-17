@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6gi5l3hwj3ol"]
+[gd_scene load_steps=20 format=3 uid="uid://b6gi5l3hwj3ol"]
 
 [ext_resource type="Script" uid="uid://dq8ac20sxb2ih" path="res://rigid_body_3d.gd" id="1_ig7tw"]
 [ext_resource type="ArrayMesh" uid="uid://b4gwfv8kx0bcs" path="res://assets/formula 1/Formula 1 mesh.obj" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://bw2ugtu8eadsf" path="res://camera_body.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://doteury4l3lfl" path="res://assets/Screenshot 2026-04-25 140000.png" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://d1rjo0qpl8o4n" path="res://HUD.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://djpc6ukh2w6y4" path="res://map.gd" id="4_5vw27"]
+[ext_resource type="Texture2D" uid="uid://de2m1ancfnubx" path="res://assets/oilmap.png" id="7_kek77"]
+[ext_resource type="Script" uid="uid://d07smsjqyappq" path="res://oil_map.gd" id="8_4c57u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,6 +40,9 @@ albedo_texture = SubResource("NoiseTexture2D_ig7tw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_texture = ExtResource("7_kek77")
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -68,6 +74,7 @@ transform = Transform3D(-51, 0, 0, 0, -0.991, 0, 0, 0, -6.575, -7.0233536, -2.18
 material_override = SubResource("StandardMaterial3D_7mycd")
 size = Vector3(8.472755, 0.001, 101.56952)
 material = SubResource("ORMMaterial3D_0xm2m")
+script = ExtResource("4_5vw27")
 
 [node name="Camera Body" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
@@ -87,3 +94,10 @@ shape = SubResource("BoxShape3D_1bvp3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9399414, -0.22949219, 5.7430735)
+
+[node name="OilMap" type="CSGBox3D" parent="."]
+transform = Transform3D(-51, 0, 0, 0, -0.991, 0, 0, 0, -6.575, -7.0233536, -2.1866696, 5.1085205)
+material_override = SubResource("StandardMaterial3D_efxa6")
+size = Vector3(8.472755, 0.001, 101.56952)
+material = SubResource("ORMMaterial3D_0xm2m")
+script = ExtResource("8_4c57u")

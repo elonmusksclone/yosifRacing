@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drrapmrw77o11"
-path.s3tc="res://.godot/imported/oil.jpg-af4554f3ae5d70689066281d0c3e9dcd.s3tc.ctex"
+uid="uid://de2m1ancfnubx"
+path.s3tc="res://.godot/imported/oilmap.png-2306f694470c5500e090192cd34081e1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/oil.jpg"
-dest_files=["res://.godot/imported/oil.jpg-af4554f3ae5d70689066281d0c3e9dcd.s3tc.ctex"]
+source_file="res://assets/oilmap.png"
+dest_files=["res://.godot/imported/oilmap.png-2306f694470c5500e090192cd34081e1.s3tc.ctex"]
 
 [params]
 
