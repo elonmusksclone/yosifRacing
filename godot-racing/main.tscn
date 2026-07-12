@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b4gwfv8kx0bcs" path="res://assets/formula 1/Formula 1 mesh.obj" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://bw2ugtu8eadsf" path="res://camera_body.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://doteury4l3lfl" path="res://assets/Screenshot 2026-04-25 140000.png" id="3_lquwl"]
+[ext_resource type="Shader" uid="uid://bo0mgu1jtd30r" path="res://wheel.gdshader" id="3_vivmo"]
 [ext_resource type="PackedScene" uid="uid://d1rjo0qpl8o4n" path="res://HUD.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://djpc6ukh2w6y4" path="res://map.gd" id="4_5vw27"]
 [ext_resource type="Texture2D" uid="uid://de2m1ancfnubx" path="res://assets/oilmap.png" id="7_kek77"]
@@ -34,6 +35,11 @@ albedo_color = Color(0.55, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
+render_priority = 0
+shader = ExtResource("3_vivmo")
+shader_parameter/speed = 0.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
 albedo_texture = ExtResource("3_lquwl")
 
@@ -45,6 +51,11 @@ albedo_texture = SubResource("NoiseTexture2D_ig7tw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0x5a"]
+resource_local_to_scene = true
+shader = ExtResource("12_dg77c")
+shader_parameter/pixel_depth = 300.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
 albedo_texture = ExtResource("7_kek77")
 
@@ -55,10 +66,8 @@ shader_parameter/set_texture = ExtResource("11_efxa6")
 
 [sub_resource type="SphereMesh" id="SphereMesh_8043x"]
 material = SubResource("ShaderMaterial_dg77c")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0x5a"]
-shader = ExtResource("12_dg77c")
-shader_parameter/pixel_depth = 10.0
+radial_segments = 8
+rings = 4
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8043x"]
 
@@ -83,7 +92,7 @@ subdivide_depth = 64
 environment = SubResource("Environment_h2yge")
 
 [node name="Car" type="RigidBody3D" parent="." unique_id=372033230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8221226, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10348797, -1.8221226, 0)
 disable_mode = 2
 gravity_scale = 0.0
 script = ExtResource("1_ig7tw")
@@ -95,9 +104,25 @@ shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Car" unique_id=1787485301]
 transform = Transform3D(-0.01, 0, -5.2453664e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.006, 1.4699873, -0.40347457, 0)
+visible = false
 mesh = ExtResource("2_1bvp3")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 surface_material_override/1 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Car" unique_id=1527045537]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Car/CSGCombiner3D" unique_id=1056327260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0292358, 0.27163184, 0)
+size = Vector3(3.0584717, 0.7208252, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Car/CSGCombiner3D" unique_id=727389481]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0.13449764, 0, -0.005308479)
+height = 1.6235352
+material = SubResource("ShaderMaterial_w48qg")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Car/CSGCombiner3D" unique_id=1717267549]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 2.0111632, 0, -0.005308479)
+height = 1.6235352
 
 [node name="Map" type="CSGBox3D" parent="." unique_id=792760449]
 transform = Transform3D(-51, 0, 0, 0, -0.991, 0, 0, 0, -6.575, -6.993328, -2.1866658, 5.182289)
@@ -118,7 +143,19 @@ fov = 90.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3133543, 1.3343382, 0)
 shape = SubResource("BoxShape3D_1bvp3")
 
+[node name="Post Processing" type="CanvasLayer" parent="." unique_id=1421732634]
+
+[node name="ColorRect" type="ColorRect" parent="Post Processing" unique_id=1386683620]
+material = SubResource("ShaderMaterial_v0x5a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1592500110]
+layer = 0
+visible = false
 
 [node name="Node2D" parent="HUD" unique_id=660707834 instance=ExtResource("4_1bvp3")]
 
@@ -135,6 +172,7 @@ script = ExtResource("8_4c57u")
 
 [node name="Pumpjack" type="RigidBody3D" parent="." unique_id=233480238]
 transform = Transform3D(0.29815942, 0, 0, 0, 0.3150997, 0, 0, 0, 0.5173204, 0, -2.2326612, 0)
+visible = false
 gravity_scale = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pumpjack" unique_id=1667249044]
@@ -144,16 +182,6 @@ mesh = ExtResource("9_kek77")
 [node name="NPC" type="MeshInstance3D" parent="." unique_id=1399661802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.37318, -2.097487, -34.225433)
 mesh = SubResource("SphereMesh_8043x")
-
-[node name="Post Processing" type="CanvasLayer" parent="." unique_id=1421732634]
-
-[node name="ColorRect" type="ColorRect" parent="Post Processing" unique_id=1386683620]
-material = SubResource("ShaderMaterial_v0x5a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=1118874625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.280073, -2.7173512, 10.677772)

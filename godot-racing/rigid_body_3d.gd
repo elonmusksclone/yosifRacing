@@ -32,4 +32,5 @@ func _process(delta: float) -> void:
 		position.z=position.z+sin(olda)/5*-speed
 		position.x=position.x+cos(olda)/5*-speed
 		speed=-(speed/1.3)
+	$CSGCombiner3D/CSGCylinder3D.material.set_shader_parameter("speed", speed);
 	await get_tree().create_timer(2).timeout
