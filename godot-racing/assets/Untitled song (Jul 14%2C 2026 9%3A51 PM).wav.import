@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbxltxo4l3g11"
+path="res://.godot/imported/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav-7ba3f0a79806033c2f087cf5bc095bc2.sample"
+
+[deps]
+
+source_file="res://assets/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav"
+dest_files=["res://.godot/imported/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav-7ba3f0a79806033c2f087cf5bc095bc2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

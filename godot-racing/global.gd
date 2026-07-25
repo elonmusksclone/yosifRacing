@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 var usoilprice = 25.66
 var inflation = 1.03
