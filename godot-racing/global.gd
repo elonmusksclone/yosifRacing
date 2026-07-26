@@ -39,4 +39,5 @@ func _process(delta: float) -> void:
 		playerz=playerz+sin(olda)/5*-speed
 		playerx=playerx+cos(olda)/5*-speed
 		speed=-(speed/1.3)
+	cash = cash + oilprice
 	await get_tree().create_timer(2).timeout

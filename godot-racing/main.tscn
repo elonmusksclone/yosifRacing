@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://dhfpnujap8jnb" path="res://pumpjack.gd" id="14_cegan"]
 [ext_resource type="AudioStream" uid="uid://cbxltxo4l3g11" path="res://assets/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav" id="17_074og"]
 [ext_resource type="Script" uid="uid://bl8fjmomasl1a" path="res://oilprices.gd" id="20_82xsv"]
+[ext_resource type="Script" uid="uid://cftqkt3k7mtnn" path="res://event.gd" id="21_getpj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -208,18 +209,31 @@ autoplay = true
 layer = 2
 script = ExtResource("20_82xsv")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1826653525]
-visible = false
-offset_top = 384.0
-offset_right = 1152.0
-offset_bottom = 648.0
-text = "AND SO YOU AWAKEN FROM A GREAT SLUMBER WITH A DRIVE AND PASSION FOR CAPITAL AND LABOUR AND AS YOU SCREAM FROM THE MORTAL SOIL THAT PERMEATES THE EARTH YOU REALISE A GREAT AMBITION ONE WHICH YOU SHALL FULFILL AND SO YOU ENGAGE THE ENGINE OF ETERNAL DESTRUCTION AND CHARGE TOWARDS THE LIQUID STORED PAST THE FOLD SO YOU MAY FINALLY ASCEND TO THE GREAT NUMBER"
-tab_size = 24
-horizontal_alignment = 1
-
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=274969199]
 offset_left = 219.0
 offset_top = 19.0
 offset_right = 314.0
 offset_bottom = 46.0
 label_settings = SubResource("LabelSettings_nrax6")
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1388402638]
+offset_left = 806.0
+offset_top = 602.0
+offset_right = 910.0
+offset_bottom = 646.0
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=452317374]
+offset_left = 248.0
+offset_top = 555.0
+offset_right = 336.0
+offset_bottom = 613.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer" unique_id=132827341]
+script = ExtResource("21_getpj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CanvasLayer" unique_id=1826653525]
+offset_top = 384.0
+offset_right = 1152.0
+offset_bottom = 648.0
+tab_size = 24
+horizontal_alignment = 1
