@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://do31rd2ab3ghd" path="res://assets/npc.png" id="11_efxa6"]
 [ext_resource type="Shader" uid="uid://se1f68e5mx16" path="res://post.gdshader" id="12_dg77c"]
 [ext_resource type="Shader" uid="uid://vh3f1tnaejdi" path="res://water.gdshader" id="13_ycdy4"]
+[ext_resource type="Script" uid="uid://dhfpnujap8jnb" path="res://pumpjack.gd" id="14_cegan"]
 [ext_resource type="AudioStream" uid="uid://cbxltxo4l3g11" path="res://assets/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav" id="17_074og"]
+[ext_resource type="Script" uid="uid://bl8fjmomasl1a" path="res://oilprices.gd" id="20_82xsv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -55,7 +57,7 @@ albedo_texture = SubResource("NoiseTexture2D_ig7tw")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v0x5a"]
 resource_local_to_scene = true
 shader = ExtResource("12_dg77c")
-shader_parameter/filter_intensity = 0.2
+shader_parameter/filter_intensity = 0.5
 shader_parameter/pixel_depth = 300.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2cqfq"]
@@ -90,6 +92,8 @@ size = Vector2(1600, 1600)
 subdivide_width = 64
 subdivide_depth = 64
 
+[sub_resource type="LabelSettings" id="LabelSettings_nrax6"]
+
 [node name="Main" type="Node3D" unique_id=1461047281]
 script = ExtResource("1_yaehf")
 
@@ -97,7 +101,7 @@ script = ExtResource("1_yaehf")
 environment = SubResource("Environment_h2yge")
 
 [node name="Car" type="RigidBody3D" parent="." unique_id=372033230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10348797, -1.8221226, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.822, 0)
 disable_mode = 2
 gravity_scale = 0.0
 script = ExtResource("1_ig7tw")
@@ -161,7 +165,6 @@ grow_vertical = 2
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1592500110]
 layer = 0
-visible = false
 
 [node name="Node2D" parent="HUD" unique_id=660707834 instance=ExtResource("4_1bvp3")]
 
@@ -178,8 +181,8 @@ script = ExtResource("8_4c57u")
 
 [node name="Pumpjack" type="RigidBody3D" parent="." unique_id=233480238]
 transform = Transform3D(0.29815942, 0, 0, 0, 0.3150997, 0, 0, 0, 0.5173204, 0, -2.2326612, 0)
-visible = false
 gravity_scale = 0.0
+script = ExtResource("14_cegan")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pumpjack" unique_id=1667249044]
 transform = Transform3D(0.014447501, 0, 0, 0, -2.9590633e-10, 0.011355883, 0, -0.006769547, -4.963814e-10, 0, 0, 0)
@@ -200,3 +203,23 @@ transform = Transform3D(1, 0, 0, 0, -0.41239583, 0.9110048, 0, -0.9110048, -0.41
 stream = ExtResource("17_074og")
 volume_db = -14.597
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=342806025]
+layer = 2
+script = ExtResource("20_82xsv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1826653525]
+visible = false
+offset_top = 384.0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "AND SO YOU AWAKEN FROM A GREAT SLUMBER WITH A DRIVE AND PASSION FOR CAPITAL AND LABOUR AND AS YOU SCREAM FROM THE MORTAL SOIL THAT PERMEATES THE EARTH YOU REALISE A GREAT AMBITION ONE WHICH YOU SHALL FULFILL AND SO YOU ENGAGE THE ENGINE OF ETERNAL DESTRUCTION AND CHARGE TOWARDS THE LIQUID STORED PAST THE FOLD SO YOU MAY FINALLY ASCEND TO THE GREAT NUMBER"
+tab_size = 24
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=274969199]
+offset_left = 219.0
+offset_top = 19.0
+offset_right = 314.0
+offset_bottom = 46.0
+label_settings = SubResource("LabelSettings_nrax6")
