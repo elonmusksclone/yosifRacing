@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://44osy72u2b00"]
+
+[ext_resource type="Shader" uid="uid://bv1yjdi0nf5y" path="res://main.gdshader" id="1_ecjnh"]
+[ext_resource type="Texture2D" uid="uid://do31rd2ab3ghd" path="res://assets/npc.png" id="2_8fm3m"]
+[ext_resource type="Script" uid="uid://c2w7vgodg3n0s" path="res://failure.gd" id="3_ecjnh"]
+[ext_resource type="Shader" uid="uid://dxvanew72h4ga" path="res://endingpost.gdshader" id="4_peiv1"]
+[ext_resource type="AudioStream" uid="uid://cpd8ykfb6dgud" path="res://assets/Untitled song (Aug 14%2C 2026 3%3A51 PM).wav" id="5_yjc7l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
+render_priority = 0
+shader = ExtResource("1_ecjnh")
+shader_parameter/set_texture = ExtResource("2_8fm3m")
+
+[sub_resource type="SphereMesh" id="SphereMesh_sy8ce"]
+material = SubResource("ShaderMaterial_dg77c")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvbhr"]
+font_size = 40
+font_color = Color(0.5668225, 0.15190601, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cidb0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7rdy"]
+resource_local_to_scene = true
+shader = ExtResource("4_peiv1")
+shader_parameter/filter_intensity = 0.5
+shader_parameter/pixel_depth = 200.0
+
+[node name="Node3D" type="Node3D" unique_id=30888508]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1542565083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4928205)
+
+[node name="NPC" type="MeshInstance3D" parent="." unique_id=1050392544]
+transform = Transform3D(-0.8005415, 0, -0.59927726, 0, 1, 0, 0.59927726, 0, -0.8005415, 0, -0.3019932, 0)
+mesh = SubResource("SphereMesh_sy8ce")
+skeleton = NodePath("../Camera3D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=473689057]
+layer = 0
+script = ExtResource("3_ecjnh")
+
+[node name="EventLabel" type="Label" parent="CanvasLayer" unique_id=1110687330]
+offset_right = 1152.0
+offset_bottom = 648.0
+label_settings = SubResource("LabelSettings_uvbhr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1958059310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2011766)
+light_color = Color(0.5156252, 0.086741276, 0.13545868, 1)
+light_energy = 0.1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=456257697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046020508, 995.6832, -1.5980802)
+size = Vector3(11.770752, 2008.4932, 1)
+material = SubResource("StandardMaterial3D_cidb0")
+
+[node name="Post Processing" type="CanvasLayer" parent="." unique_id=1431518680]
+
+[node name="ColorRect" type="ColorRect" parent="Post Processing" unique_id=2081045116]
+material = SubResource("ShaderMaterial_k7rdy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=679130108]
+stream = ExtResource("5_yjc7l")
+volume_db = -14.597
+autoplay = true

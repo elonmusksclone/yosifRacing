@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://b6gi5l3hwj3ol"]
+
+[ext_resource type="Script" uid="uid://dq8ac20sxb2ih" path="res://rigid_body_3d.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cwuc22nssw2am" path="res://global.gd" id="1_yaehf"]
+[ext_resource type="ArrayMesh" uid="uid://b4gwfv8kx0bcs" path="res://assets/formula 1/Formula 1 mesh.obj" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bw2ugtu8eadsf" path="res://camera_body.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://doteury4l3lfl" path="res://assets/Screenshot 2026-04-25 140000.png" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://c4urlg0g77f6m" path="res://wheel.gd" id="3_w48qg"]
+[ext_resource type="PackedScene" uid="uid://d1rjo0qpl8o4n" path="res://HUD.tscn" id="4_1bvp3"]
+[ext_resource type="Shader" uid="uid://ds7op4h1xugmi" path="res://map1.gdshader" id="4_2cqfq"]
+[ext_resource type="Script" uid="uid://djpc6ukh2w6y4" path="res://map.gd" id="4_5vw27"]
+[ext_resource type="Texture2D" uid="uid://de2m1ancfnubx" path="res://assets/oilmap.png" id="7_kek77"]
+[ext_resource type="Script" uid="uid://d07smsjqyappq" path="res://oil_map.gd" id="8_4c57u"]
+[ext_resource type="ArrayMesh" uid="uid://tcdkn276vyor" path="res://assets/17494_Oil_pump_jack_v1_NEW.obj" id="9_kek77"]
+[ext_resource type="Script" uid="uid://bcmq78jr7ckv6" path="res://postscript.gd" id="10_d13ii"]
+[ext_resource type="Shader" uid="uid://bv1yjdi0nf5y" path="res://main.gdshader" id="10_efxa6"]
+[ext_resource type="Shader" uid="uid://d5hdnb8618lg" path="res://map2.gdshader" id="10_yaehf"]
+[ext_resource type="Texture2D" uid="uid://do31rd2ab3ghd" path="res://assets/npc.png" id="11_efxa6"]
+[ext_resource type="Shader" uid="uid://se1f68e5mx16" path="res://post.gdshader" id="12_dg77c"]
+[ext_resource type="Shader" uid="uid://vh3f1tnaejdi" path="res://water.gdshader" id="13_ycdy4"]
+[ext_resource type="Script" uid="uid://dhfpnujap8jnb" path="res://pumpjack.gd" id="14_cegan"]
+[ext_resource type="AudioStream" uid="uid://cbxltxo4l3g11" path="res://assets/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav" id="17_074og"]
+[ext_resource type="Script" uid="uid://bl8fjmomasl1a" path="res://oilprices.gd" id="20_82xsv"]
+[ext_resource type="Script" uid="uid://sc4txmfyrmpg" path="res://eventText.gd" id="21_getpj"]
+[ext_resource type="LabelSettings" uid="uid://djg27oiuwr276" path="res://currency.tres" id="21_ryguw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(0.55, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vivmo"]
+render_priority = 0
+shader = ExtResource("4_2cqfq")
+shader_parameter/set_texture = ExtResource("3_lquwl")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ig7tw"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_0xm2m"]
+albedo_color = Color(0.5546625, 0.5546625, 0.5546625, 1)
+albedo_texture = SubResource("NoiseTexture2D_ig7tw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0x5a"]
+resource_local_to_scene = true
+shader = ExtResource("12_dg77c")
+shader_parameter/filter_intensity = 0.5
+shader_parameter/pixel_depth = 300.0
+shader_parameter/darkness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cqfq"]
+render_priority = 0
+shader = ExtResource("10_yaehf")
+shader_parameter/set_texture = ExtResource("7_kek77")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
+render_priority = 0
+shader = ExtResource("10_efxa6")
+shader_parameter/set_texture = ExtResource("11_efxa6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8043x"]
+material = SubResource("ShaderMaterial_dg77c")
+radial_segments = 8
+rings = 4
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8043x"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v0x5a"]
+noise = SubResource("FastNoiseLite_8043x")
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbtgw"]
+render_priority = 0
+shader = ExtResource("13_ycdy4")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_v0x5a")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_asbbp"]
+material = SubResource("ShaderMaterial_rbtgw")
+size = Vector2(1600, 1600)
+subdivide_width = 64
+subdivide_depth = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_cidb0"]
+font_size = 48
+font_color = Color(0.5668225, 0.15190601, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+
+[node name="Main" type="Node3D" unique_id=1461047281]
+script = ExtResource("1_yaehf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1331456526]
+environment = SubResource("Environment_h2yge")
+
+[node name="Car" type="RigidBody3D" parent="." unique_id=372033230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.822, 0)
+disable_mode = 2
+gravity_scale = 0.0
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car" unique_id=581219664]
+transform = Transform3D(-0.07445655, -0.9971048, 0.015437483, 0, 0.015480452, 0.9998802, -0.9972243, 0.07444763, -0.0011526211, 0, 0, 0)
+rotation_edit_mode = 1
+shape = SubResource("CapsuleShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Car" unique_id=1787485301]
+transform = Transform3D(-0.01, 0, -5.2453664e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.006, 1.4699873, -0.40347457, 0)
+visible = false
+mesh = ExtResource("2_1bvp3")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+surface_material_override/1 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Car" unique_id=1527045537]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Car/CSGCombiner3D" unique_id=1056327260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0292358, 0.27163184, 0)
+size = Vector3(3.0584717, 0.7208252, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Car/CSGCombiner3D" unique_id=727389481]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0.13449764, 0, -0.005308479)
+height = 1.6235352
+script = ExtResource("3_w48qg")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Car/CSGCombiner3D" unique_id=1717267549]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 2.0111632, 0, -0.005308479)
+height = 1.6235352
+script = ExtResource("3_w48qg")
+
+[node name="Map" type="CSGBox3D" parent="." unique_id=792760449]
+transform = Transform3D(-51, 0, 0, 0, -0.991, 0, 0, 0, -6.575, -6.993328, -2.1866658, 5.182289)
+material_override = SubResource("ShaderMaterial_vivmo")
+size = Vector3(8.472755, 0.001, 101.56952)
+material = SubResource("ORMMaterial3D_0xm2m")
+script = ExtResource("4_5vw27")
+
+[node name="Camera Body" type="RigidBody3D" parent="." unique_id=550968986]
+gravity_scale = 0.0
+script = ExtResource("2_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="Camera Body" unique_id=428075779]
+transform = Transform3D(-0.00852357, 0.37466532, -0.927121, -0.009314963, 0.9270847, 0.37473628, 0.9999203, 0.011830188, -0.004412078, -1.4900742, -0.49413133, 0.9339129)
+fov = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Body" unique_id=782935493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3133543, 1.3343382, 0)
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="Post Processing" type="CanvasLayer" parent="." unique_id=1421732634]
+
+[node name="ColorRect" type="ColorRect" parent="Post Processing" unique_id=1386683620]
+material = SubResource("ShaderMaterial_v0x5a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_d13ii")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1592500110]
+layer = 0
+
+[node name="Node2D" parent="HUD" unique_id=660707834 instance=ExtResource("4_1bvp3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=439833648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9399414, -0.22949219, 5.7430735)
+
+[node name="OilMap" type="CSGBox3D" parent="." unique_id=524255433]
+transform = Transform3D(-51, 0, 0, 0, -0.991, 0, 0, 0, -6.575, -7.0233536, -2.1866696, 5.1085205)
+visible = false
+material_override = SubResource("ShaderMaterial_2cqfq")
+size = Vector3(8.472755, 0.001, 101.56952)
+material = SubResource("ORMMaterial3D_0xm2m")
+script = ExtResource("8_4c57u")
+
+[node name="Pumpjack" type="RigidBody3D" parent="." unique_id=233480238]
+transform = Transform3D(0.29815942, 0, 0, 0, 0.3150997, 0, 0, 0, 0.5173204, 0, -2.2326612, 0)
+gravity_scale = 0.0
+script = ExtResource("14_cegan")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pumpjack" unique_id=1667249044]
+transform = Transform3D(0.014447501, 0, 0, 0, -2.9590633e-10, 0.011355883, 0, -0.006769547, -4.963814e-10, 0, 0, 0)
+mesh = ExtResource("9_kek77")
+
+[node name="NPC" type="MeshInstance3D" parent="." unique_id=1399661802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.37318, -2.097487, -34.225433)
+mesh = SubResource("SphereMesh_8043x")
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1118874625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.280073, -2.7173512, 10.677772)
+mesh = SubResource("PlaneMesh_asbbp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=841428038]
+transform = Transform3D(1, 0, 0, 0, -0.41239583, 0.9110048, 0, -0.9110048, -0.41239583, -252.65213, 172.25896, -372.34833)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1636980829]
+stream = ExtResource("17_074og")
+volume_db = -14.597
+autoplay = true
+
+[node name="Node" type="Node" parent="." unique_id=669292254]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node" unique_id=342806025]
+layer = 0
+script = ExtResource("20_82xsv")
+
+[node name="Label" type="Label" parent="Node/CanvasLayer" unique_id=274969199]
+offset_left = 219.0
+offset_top = 19.0
+offset_right = 314.0
+offset_bottom = 46.0
+label_settings = ExtResource("21_ryguw")
+
+[node name="Label2" type="Label" parent="Node/CanvasLayer" unique_id=1388402638]
+offset_left = 806.0
+offset_top = 602.0
+offset_right = 910.0
+offset_bottom = 646.0
+label_settings = ExtResource("21_ryguw")
+
+[node name="Label3" type="Label" parent="Node/CanvasLayer" unique_id=452317374]
+offset_left = 248.0
+offset_top = 555.0
+offset_right = 336.0
+offset_bottom = 613.0
+label_settings = ExtResource("21_ryguw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node/CanvasLayer" unique_id=132827341]
+layer = 0
+script = ExtResource("21_getpj")
+
+[node name="EventLabel" type="Label" parent="Node/CanvasLayer/CanvasLayer" unique_id=121124625]
+offset_left = 562.0
+offset_top = 164.0
+offset_right = 1151.0
+offset_bottom = 441.0
+label_settings = SubResource("LabelSettings_cidb0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

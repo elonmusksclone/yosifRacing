@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://de2m1ancfnubx" path="res://assets/oilmap.png" id="7_kek77"]
 [ext_resource type="Script" uid="uid://d07smsjqyappq" path="res://oil_map.gd" id="8_4c57u"]
 [ext_resource type="ArrayMesh" uid="uid://tcdkn276vyor" path="res://assets/17494_Oil_pump_jack_v1_NEW.obj" id="9_kek77"]
+[ext_resource type="Script" uid="uid://bcmq78jr7ckv6" path="res://postscript.gd" id="10_d13ii"]
 [ext_resource type="Shader" uid="uid://bv1yjdi0nf5y" path="res://main.gdshader" id="10_efxa6"]
 [ext_resource type="Shader" uid="uid://d5hdnb8618lg" path="res://map2.gdshader" id="10_yaehf"]
 [ext_resource type="Texture2D" uid="uid://do31rd2ab3ghd" path="res://assets/npc.png" id="11_efxa6"]
@@ -20,7 +21,9 @@
 [ext_resource type="Script" uid="uid://dhfpnujap8jnb" path="res://pumpjack.gd" id="14_cegan"]
 [ext_resource type="AudioStream" uid="uid://cbxltxo4l3g11" path="res://assets/Untitled song (Jul 14%2C 2026 9%3A51 PM).wav" id="17_074og"]
 [ext_resource type="Script" uid="uid://bl8fjmomasl1a" path="res://oilprices.gd" id="20_82xsv"]
-[ext_resource type="Script" uid="uid://cftqkt3k7mtnn" path="res://event.gd" id="21_getpj"]
+[ext_resource type="Script" uid="uid://sc4txmfyrmpg" path="res://eventText.gd" id="21_getpj"]
+[ext_resource type="LabelSettings" uid="uid://djg27oiuwr276" path="res://currency.tres" id="21_ryguw"]
+[ext_resource type="Script" uid="uid://dbqgfad286e4x" path="res://scene_loader.gd" id="24_1u8w0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -60,19 +63,20 @@ resource_local_to_scene = true
 shader = ExtResource("12_dg77c")
 shader_parameter/filter_intensity = 0.5
 shader_parameter/pixel_depth = 300.0
+shader_parameter/darkness = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2cqfq"]
 render_priority = 0
 shader = ExtResource("10_yaehf")
 shader_parameter/set_texture = ExtResource("7_kek77")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
 render_priority = 0
 shader = ExtResource("10_efxa6")
 shader_parameter/set_texture = ExtResource("11_efxa6")
 
 [sub_resource type="SphereMesh" id="SphereMesh_8043x"]
-material = SubResource("ShaderMaterial_dg77c")
+material = SubResource("ShaderMaterial_d13ii")
 radial_segments = 8
 rings = 4
 
@@ -93,7 +97,12 @@ size = Vector2(1600, 1600)
 subdivide_width = 64
 subdivide_depth = 64
 
-[sub_resource type="LabelSettings" id="LabelSettings_nrax6"]
+[sub_resource type="LabelSettings" id="LabelSettings_cidb0"]
+font_size = 40
+font_color = Color(0.5668225, 0.15190601, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
 
 [node name="Main" type="Node3D" unique_id=1461047281]
 script = ExtResource("1_yaehf")
@@ -163,6 +172,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("10_d13ii")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1592500110]
 layer = 0
@@ -191,6 +201,7 @@ mesh = ExtResource("9_kek77")
 
 [node name="NPC" type="MeshInstance3D" parent="." unique_id=1399661802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.37318, -2.097487, -34.225433)
+visible = false
 mesh = SubResource("SphereMesh_8043x")
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=1118874625]
@@ -205,35 +216,46 @@ stream = ExtResource("17_074og")
 volume_db = -14.597
 autoplay = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=342806025]
-layer = 2
+[node name="Node" type="Node" parent="." unique_id=669292254]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node" unique_id=342806025]
+layer = 0
 script = ExtResource("20_82xsv")
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=274969199]
+[node name="Label" type="Label" parent="Node/CanvasLayer" unique_id=274969199]
 offset_left = 219.0
 offset_top = 19.0
 offset_right = 314.0
 offset_bottom = 46.0
-label_settings = SubResource("LabelSettings_nrax6")
+label_settings = ExtResource("21_ryguw")
 
-[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1388402638]
+[node name="Label2" type="Label" parent="Node/CanvasLayer" unique_id=1388402638]
 offset_left = 806.0
 offset_top = 602.0
 offset_right = 910.0
 offset_bottom = 646.0
+label_settings = ExtResource("21_ryguw")
 
-[node name="Label3" type="Label" parent="CanvasLayer" unique_id=452317374]
+[node name="Label3" type="Label" parent="Node/CanvasLayer" unique_id=452317374]
 offset_left = 248.0
 offset_top = 555.0
 offset_right = 336.0
 offset_bottom = 613.0
+label_settings = ExtResource("21_ryguw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer" unique_id=132827341]
+[node name="CanvasLayer" type="CanvasLayer" parent="Node/CanvasLayer" unique_id=132827341]
+layer = 0
 script = ExtResource("21_getpj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CanvasLayer" unique_id=1826653525]
-offset_top = 384.0
-offset_right = 1152.0
-offset_bottom = 648.0
-tab_size = 24
+[node name="EventLabel" type="Label" parent="Node/CanvasLayer/CanvasLayer" unique_id=121124625]
+offset_left = 562.0
+offset_top = 164.0
+offset_right = 1151.0
+offset_bottom = 441.0
+label_settings = SubResource("LabelSettings_cidb0")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SceneLoader" type="Node" parent="." unique_id=257324228]
+script = ExtResource("24_1u8w0")
