@@ -116,13 +116,13 @@ disable_mode = 2
 gravity_scale = 0.0
 script = ExtResource("1_ig7tw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Car" unique_id=581219664]
-transform = Transform3D(-0.07445655, -0.9971048, 0.015437483, 0, 0.015480452, 0.9998802, -0.9972243, 0.07444763, -0.0011526211, 0, 0, 0)
+[node name="CarCollider" type="CollisionShape3D" parent="Car" unique_id=581219664]
+transform = Transform3D(1.3837128e-08, 0.015480495, 0.9998802, 0.07445655, 0.9971048, -0.015437527, -0.9972242, 0.074447624, -0.001152621, 0.98450553, -0.20311213, 0)
 rotation_edit_mode = 1
 shape = SubResource("CapsuleShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Car" unique_id=1787485301]
-transform = Transform3D(-0.01, 0, -5.2453664e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.006, 1.4699873, -0.40347457, 0)
+transform = Transform3D(-0.01, 0, -5.2453664e-10, 0, 0.01, 0, 8.7422775e-10, 0, -0.006, 0.9715923, -0.40347457, 0)
 visible = false
 mesh = ExtResource("2_1bvp3")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")

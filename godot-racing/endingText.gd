@@ -31,5 +31,5 @@ func _on_timer_timeout():
 		$EventLabel.text = "FOREVER. TO INFINITY."
 	elif (line == 8):
 		$EventLabel.text = "LONELY, AND SAD..."
-	elif (line >= 9):
-		$EventLabel.text = "Oil Tycoon, by Yosif Carroll"
+	elif (line == 11):
+		get_tree().change_scene_to_file("res://menu.tscn")

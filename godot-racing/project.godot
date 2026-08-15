@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="godot racing"
-run/main_scene="uid://b6gi5l3hwj3ol"
+run/main_scene="uid://gikppkd18ett"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

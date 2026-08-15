@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://do31rd2ab3ghd" path="res://assets/npc.png" id="2_4jooh"]
 [ext_resource type="Script" uid="uid://2vr1rxmrolyp" path="res://endingText.gd" id="3_iggq8"]
 [ext_resource type="Shader" uid="uid://dxvanew72h4ga" path="res://endingpost.gdshader" id="4_4jooh"]
+[ext_resource type="LabelSettings" uid="uid://5y2wm58dyt76" path="res://EndText.tres" id="4_sy8ce"]
 [ext_resource type="AudioStream" uid="uid://cpd8ykfb6dgud" path="res://assets/Untitled song (Aug 14%2C 2026 3%3A51 PM).wav" id="5_k7rdy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
@@ -15,13 +16,6 @@ shader_parameter/set_texture = ExtResource("2_4jooh")
 material = SubResource("ShaderMaterial_dg77c")
 radial_segments = 8
 rings = 4
-
-[sub_resource type="LabelSettings" id="LabelSettings_uvbhr"]
-font_size = 40
-font_color = Color(0.5668225, 0.15190601, 0, 1)
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cidb0"]
 albedo_color = Color(0, 0, 0, 1)
@@ -49,7 +43,7 @@ script = ExtResource("3_iggq8")
 [node name="EventLabel" type="Label" parent="CanvasLayer" unique_id=1110687330]
 offset_right = 1152.0
 offset_bottom = 648.0
-label_settings = SubResource("LabelSettings_uvbhr")
+label_settings = ExtResource("4_sy8ce")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -73,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=679130108]
 stream = ExtResource("5_k7rdy")
